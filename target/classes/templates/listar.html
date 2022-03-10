@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="navbar :: head"></head>
+
+<body>
+
+
+	<header th:replace="navbar :: navbar"></header>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h3 class="text text-center p-3 mb-2 bg-info text-white"
+					th:text="${titulo}"></h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+
+				<table class="table table-hover table-responsive-sm">
+
+					<thead class="thead-dark">
+						<tr>
+							<th>NOMBRE</th>
+							<th>APELLIDO</th>
+							<th>DNI</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="clieJorge : ${cliente}">
+							<td th:text="${clieJorge.nombre}"></td>
+							<td th:text="${clieJorge.apellido}"></td>
+							<td th:text="${clieJorge.dni}"></td>
+							<td> <img th:src="@{/editar.png}"/>  <a th:href="@{/clientes/form/} + ${clieJorge.id}">Editar</a>
+							</td>
+							<td><a th:href="@{/clientes/eliminar/} + ${clieJorge.id}">Eliminar</a>
+							</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="navbar :: footer"></footer>
+
+
+</body>
+</html>
